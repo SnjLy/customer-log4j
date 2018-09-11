@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="APP" class="com.helijia.framework.log.DockerDailyRollingFileAppender">
+        <param name="filePath" value="/tmp/logs/hljlog" />
+        <param name="fileName" value="sys.log" />
+        <param name="append" value="true"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss} [%c]-[%t]-[%M]-[%L]-[%p] %m%n"/>
+        </layout>
+    </appender>
+    <logger name="com.helijia.log" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="APP" />
+    </logger>
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="APP" />
+    </root>
+
+</log4j:configuration>  
