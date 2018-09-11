@@ -1,0 +1,2 @@
+# CustomerLog
+自定义log4j的appender,适用在docker环境下产生日志到指定目录，包含容器ID，自定义生成文件的权限
